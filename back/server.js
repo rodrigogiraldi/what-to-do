@@ -1,8 +1,10 @@
 var express = require('express');
-// var mongodb = require('mongodb');
+var mongodb = require('mongodb');
+
+var MongoClient = mongodb.MongoClient;
+var url = 'mongodb://localhost:27017/whattodo';
 
 var app = express();
-
 app.get('/thing/listall', function(req, res){
     res.send("list");
 });
