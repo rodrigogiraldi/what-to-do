@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "cookie-session": "^2.0.0-alpha.1",
     "express": "^4.13.4",
     "mongodb": "^2.1.21",
     "mongoose": "^4.4.19"
