@@ -19,7 +19,7 @@ app.use(cookieSession({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use("/public", express.static("../front/web/public"));
+app.use("/public", express.static("../front/web/public"));
 app.use("/static", express.static("../front/web/static"));
 
 //LOGIN

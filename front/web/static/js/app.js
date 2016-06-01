@@ -1,1 +1,1 @@
-var app = angular.module("whatToDoApp", []);
+var app = angular.module("whatToDoApp", ['ngCookies']);
