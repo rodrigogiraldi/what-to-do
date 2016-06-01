@@ -35,16 +35,25 @@ app.post("/user/checklogin", function (req, res) {
         if (err) {
             console.error(err);
         }
-        else{
-            console.log(users);
+        else {
+            if (users.length == 0) {
+                res.send("dados errados")
+                console.log("dados errados");
+            }
+            else {
+                console.log("login ok");
+                req.session.user = userPost.email;
+                res.send("login ok");
+                // res.redirect("/");
+            }
         }
     });
     // userDb.save(function(err, userDb){
     //    if(err) console.error(err); 
     // });
 
-    res.send("ok");
-    console.log(req.body);
+    // res.send("ok");
+    // console.log(req.body);
     //checar login no banco
 })
 
