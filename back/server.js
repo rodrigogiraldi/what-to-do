@@ -4,7 +4,7 @@ var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-var Thing = require('./models/thing');
+var Event = require('./models/event');
 var User = require('./models/user');
 
 var url = 'mongodb://localhost:27017/whattodo';
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/public", express.static("../front/web/public"));
 app.use("/static", express.static("../front/web/static"));
 
-//LOGIN
+//USER
 mongoose.connect(url);
 app.post("/user/checklogin", function (req, res) {
     var userPost = req.body;
@@ -55,6 +55,30 @@ app.post("/user/checklogin", function (req, res) {
     // res.send("ok");
     // console.log(req.body);
     //checar login no banco
+})
+
+app.post("/event/add", function (req, res) {
+
+    var eventDb = new Event();
+    // eventDb.name = eventPost.name;
+    // eventDb.city = eventPost.city;
+    // eventDb.category = eventPost.category;
+
+    eventDb.set(req.body);
+    eventDb.save(function (err, eventDb) {
+        if (err) {
+            console.error(err);
+            res.send("err");
+        }
+        else {
+            res.send("added");
+        }
+    })
+
+
+    // console.log(eventDb);
+    // console.log(req.body);
+    // res.send("ok from back");
 })
 
 // app.get('/', function (req, res) {
