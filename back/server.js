@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 
 var Event = require('./models/event');
 var User = require('./models/user');
+var Tip = require('./models/tip');
 
 var url = 'mongodb://localhost:27017/whattodo';
 
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/public", express.static("../front/web/public"));
 app.use("/static", express.static("../front/web/static"));
+
 
 //USER
 mongoose.connect(url);
@@ -57,6 +59,8 @@ app.post("/user/checklogin", function (req, res) {
     //checar login no banco
 })
 
+
+//EVENT
 app.post("/event/add", function (req, res) {
 
     var eventDb = new Event();
@@ -94,14 +98,11 @@ app.get("/event/list_all", function (req, res) {
     });
 });
 
-// app.get('/', function (req, res) {
-//     if (req.session.user == undefined) {
-//         res.redirect("/static/pages/login.html");
-//     }
-//     else {
-//         res.send("Logado");
-//     }
-// });
+
+//TIP
+// app.post("/tip/add");
+// app.get("/tip/list");
+
 
 var port = 8002;
 app.listen(port);

@@ -40,6 +40,7 @@
     <script src="../js/config.js"></script>
     
     <script src="../js/controllers/event.js"></script>
+    <script src="../js/controllers/chat.js"></script>
     
 </head>
 
@@ -128,7 +129,8 @@
                 </div>
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-4">
-                    <div class="chat-panel panel panel-default">
+                    <div class="chat-panel panel panel-default" ng-controller="ChatCtrl">
+                        {{value}}
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i> Tip Chat
                             <div class="btn-group pull-right">
