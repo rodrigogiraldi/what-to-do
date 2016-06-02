@@ -30,9 +30,18 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- AngularJS -->
+    <script src="../scripts/angular.min.js"></script>
+    <script src="../scripts/angular-cookies.min.js"></script>
+    <script src="../scripts/angular-ui-router.min.js"></script>
+
+    <!-- AppJS -->
+    <script src="../js/app.js"></script>
+    <script src="../js/config.js"></script>
+    
 </head>
 
-<body>
+<body ng-app="whatToDoApp">
 
     <div id="wrapper">
 
@@ -45,7 +54,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">What To Do?</a>
+                <a class="navbar-brand">What To Do?</a>
+                <!--<a class="navbar-brand" ui-sref="home">What To Do?</a>-->
             </div>
             <!-- /.navbar-header -->
 
@@ -83,16 +93,16 @@
                             <a href="#"><i class="fa fa-fire fa-fw"></i> Things<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#find">Find</a>
+                                    <a ui-sref="things_find">Find</a>
                                 </li>
                                 <li>
-                                    <a href="#add">Add</a>
+                                    <a ui-sref="things_add">Add</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#map"><i class="fa fa-map-marker fa-fw"></i> Map</a>
+                            <a ui-sref="map"><i class="fa fa-map-marker fa-fw"></i> Map</a>
                         </li>
                     </ul>
                 </div>
@@ -112,34 +122,7 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Form Add
-                        </div>
-                        <div class="panel-body">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input class="form-control" placeholder="Ex Ipsum Night Club">
-                                </div>
-                                <div class="form-group">
-                                    <label>City</label>
-                                    <input class="form-control" placeholder="Ex London">
-                                </div>
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <select class="form-control">
-                                        <option>Nightclub</option>
-                                        <option>Pub</option>
-                                        <option>Show</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
-                            </form>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
+                    <div ui-view></div>
                 </div>
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-4">
