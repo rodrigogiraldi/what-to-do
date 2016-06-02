@@ -20,7 +20,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state('event_find', {
             url: '/event_find',
-            templateUrl: '../pages/event_find.html'
+            templateUrl: '../pages/event_find.html',
+            controller: 'EventCtrl'
         })
 
         .state('map', {

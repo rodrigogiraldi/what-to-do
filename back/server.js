@@ -79,7 +79,20 @@ app.post("/event/add", function (req, res) {
     // console.log(eventDb);
     // console.log(req.body);
     // res.send("ok from back");
-})
+});
+
+app.get("/event/list_all", function (req, res) {
+
+    Event.find(function (err, events) {
+        if (err) {
+            console.error(err);
+            res.send("err");
+        }
+        else {
+            res.send(events);
+        }
+    });
+});
 
 // app.get('/', function (req, res) {
 //     if (req.session.user == undefined) {

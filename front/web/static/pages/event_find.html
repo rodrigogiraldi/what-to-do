@@ -1,1 +1,28 @@
-Find
+<div class="panel panel-default" ng-init="listEvents()">
+    <div class="panel-heading">
+        Find Events
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="evt in events">
+                        <td>{{evt.city}}</td>
+                        <td>{{evt.name}}</td>
+                        <td>{{evt.category}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+</div>

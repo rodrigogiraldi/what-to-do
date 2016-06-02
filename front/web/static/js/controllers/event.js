@@ -9,21 +9,22 @@ app.controller("EventCtrl", function ($scope, $http) {
 
     $scope.validateEvent = function () {
         var event = $scope.event;
-        
+
         if (event.name != "" && event.city != "" && event.category != "") {
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
+
     $scope.addEvent = function () {
         var valid = $scope.validateEvent();
-        
+
         if (valid) {
             $http
                 .post("/event/add", $scope.event)
-                .then(function(res){
+                .then(function (res) {
                     // console.log("chegou" + res.data);
                 });
             // console.log("ok");
@@ -31,5 +32,13 @@ app.controller("EventCtrl", function ($scope, $http) {
         else {
             // console.log("not ok");
         }
+    }
+
+    $scope.listEvents = function () {
+        $http
+            .get("/event/list_all")
+            .then(function(res){
+                $scope.events = res.data;
+            })
     }
 });
