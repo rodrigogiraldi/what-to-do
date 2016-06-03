@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 var Event = require('./models/event');
 var User = require('./models/user');
-var Tip = require('./models/tip');
+var ChatMessage = require('./models/chat_message');
 
 var url = 'mongodb://localhost:27017/whattodo';
 
@@ -100,9 +100,38 @@ app.get("/event/list_all", function (req, res) {
 
 
 //TIP
-// app.post("/tip/add");
-// app.get("/tip/list");
+app.post("/chat/sendmessage", function (req, res) {
+    var chatMessage = new ChatMessage();
 
+    chatMessage.set(req.body);
+    chatMessage.save(function (err, chatMessage) {
+        if (err) {
+            console.error(err)
+            res.send("err")
+        }
+        else{
+            res.send("added");
+            console.log("added");
+        }
+    })
+});
+
+app.get("/chat/listall", function(req, res){
+    ChatMessage.find(function(err, messages){
+        if (err){
+            console.error(err);
+            res.send("err");
+        }
+        else{
+            res.send(messages);
+        }
+    })
+});
+
+
+app.get("/", function(req, res){
+    res.redirect("/static/pages/login.html");
+})
 
 var port = 8002;
 app.listen(port);
