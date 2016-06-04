@@ -1,8 +1,11 @@
+process.chdir(__dirname);
+
 var cookieSession = require('cookie-session');
 var express = require('express');
 var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+
 
 var app = module.exports = express();
 
