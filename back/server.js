@@ -7,10 +7,6 @@ var bodyParser = require('body-parser');
 var app = module.exports = express();
 
 var EventDAO = require('./dao/event_dao');
-var UserDAO = require('./dao/user_dao');
-var ChatMessageDAO = require('./dao/chat_message_dao');
-
-var UserService = require('./services/user_service');
 
 var url = 'mongodb://localhost:27017/whattodo';
 
@@ -27,6 +23,7 @@ app.use("/static", express.static("../front/web/static"));
 
 mongoose.connect(url);
 
+var ChatController = require('./controllers/chat_controller')(app);
 var UserController = require('./controllers/user_controller')(app);
 
 
@@ -67,36 +64,6 @@ app.get("/event/list_all", function (req, res) {
             res.send(events);
         }
     });
-});
-
-
-//CHAT
-app.post("/chat/sendmessage", function (req, res) {
-    var chatMessage = new ChatMessageDAO();
-
-    chatMessage.set(req.body);
-    chatMessage.save(function (err, chatMessage) {
-        if (err) {
-            console.error(err)
-            res.send("err")
-        }
-        else{
-            res.send("added");
-            console.log("added");
-        }
-    })
-});
-
-app.get("/chat/listall", function(req, res){
-    ChatMessageDAO.find(function(err, messages){
-        if (err){
-            console.error(err);
-            res.send("err");
-        }
-        else{
-            res.send(messages);
-        }
-    })
 });
 
 

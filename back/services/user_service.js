@@ -1,4 +1,6 @@
-var checkLogin = function(req, res, UserDAO){
+var UserDAO = require('../dao/user_dao');
+
+var checkLogin = function(req, res){
     var userPost = req.body;
 
     var userDb = new UserDAO();
