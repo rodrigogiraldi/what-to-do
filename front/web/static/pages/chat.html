@@ -6,8 +6,8 @@
     <!-- /.panel-heading -->
     <div class="panel-body">
         <ul class="chat">
-            <li class="left clearfix" ng-repeat="msg in messages">
-                <span class="chat-img pull-left">
+            <li ng-class="msg.owner?'left clearfix':'right clearfix'" ng-repeat="msg in messages">
+                <span ng-class="msg.owner?'chat-img pull-left':'chat-img pull-right'">
                     <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
                 </span>
                 <div class="chat-body clearfix">
@@ -15,6 +15,7 @@
                         <strong class="primary-font">{{msg.user}}</strong>
                     </div>
                     <p>
+                        <!--{{msg.owner}}-->
                         {{msg.message}}
                     </p>
                 </div>

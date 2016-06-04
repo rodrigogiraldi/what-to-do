@@ -8,7 +8,7 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter('default'));
 })
 
-gulp.task('run', ['jshint'], function (cb) {
+gulp.task('run', function (cb) {
     exec('node back/server.js', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
