@@ -4,13 +4,19 @@ var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-var Event = require('./models/event');
-var User = require('./models/user');
-var ChatMessage = require('./models/chat_message');
+var app = module.exports = express();
+
+var EventDAO = require('./dao/event_dao');
+var UserDAO = require('./dao/user_dao');
+var ChatMessageDAO = require('./dao/chat_message_dao');
+
+var UserService = require('./services/user_service');
 
 var url = 'mongodb://localhost:27017/whattodo';
 
-var app = express();
+// var app = module.exports = express();
+
+var UserController = require('./controllers/user_controller')(app);
 
 app.use(cookieSession({
     name: 'session',
@@ -23,17 +29,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/public", express.static("../front/web/public"));
 app.use("/static", express.static("../front/web/static"));
 
+mongoose.connect(url);
+
+// app.get("/us/**", function(req, res){
+//     res.send("US");
+// });
 
 //USER
-mongoose.connect(url);
+// app.post("/user/checklogin", function (req, res) {
+//     UserService.checkLogin(req, res, UserDAO);
+// });
+
 app.post("/user/checklogin", function (req, res) {
     var userPost = req.body;
 
-    var userDb = new User();
+    var userDb = new UserDAO();
     userDb.email = userPost.email;
     userDb.password = userPost.password;
 
-    User.find(userPost, function (err, users) {
+    UserDAO.find(userPost, function (err, users) {
         if (err) {
             console.error(err);
         }
@@ -63,7 +77,7 @@ app.post("/user/checklogin", function (req, res) {
 //EVENT
 app.post("/event/add", function (req, res) {
 
-    var eventDb = new Event();
+    var eventDb = new EventDAO();
     // eventDb.name = eventPost.name;
     // eventDb.city = eventPost.city;
     // eventDb.category = eventPost.category;
@@ -87,7 +101,7 @@ app.post("/event/add", function (req, res) {
 
 app.get("/event/list_all", function (req, res) {
 
-    Event.find(function (err, events) {
+    EventDAO.find(function (err, events) {
         if (err) {
             console.error(err);
             res.send("err");
@@ -99,9 +113,9 @@ app.get("/event/list_all", function (req, res) {
 });
 
 
-//TIP
+//CHAT
 app.post("/chat/sendmessage", function (req, res) {
-    var chatMessage = new ChatMessage();
+    var chatMessage = new ChatMessageDAO();
 
     chatMessage.set(req.body);
     chatMessage.save(function (err, chatMessage) {
@@ -117,7 +131,7 @@ app.post("/chat/sendmessage", function (req, res) {
 });
 
 app.get("/chat/listall", function(req, res){
-    ChatMessage.find(function(err, messages){
+    ChatMessageDAO.find(function(err, messages){
         if (err){
             console.error(err);
             res.send("err");
@@ -132,6 +146,8 @@ app.get("/chat/listall", function(req, res){
 app.get("/", function(req, res){
     res.redirect("/static/pages/login.html");
 })
+
+// module.export()
 
 var port = 8002;
 app.listen(port);
