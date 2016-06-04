@@ -4,7 +4,7 @@ app.controller("UserCtrl", function ($scope, $http, $cookies) {
         password: ""
     };
 
-    $scope.checkLogin = () => {
+    $scope.checkLogin = function() {
         $http
             // .post("/use", $scope.user)
             .post("/user/checklogin", $scope.user)
@@ -18,16 +18,16 @@ app.controller("UserCtrl", function ($scope, $http, $cookies) {
                 }
             });
 
-    }
+    };
 
-    $scope.isLogged = () => {
-        if ($cookies.get("email") != undefined) {
+    $scope.isLogged = function() {
+        if ($cookies.get("email") !== undefined) {
             window.location.replace("/static/pages/index.html");
-        };
-    }
+        }
+    };
 
-    $scope.logout = () => {
+    $scope.logout = function() {
         $cookies.remove("email");
         window.location.replace("/static/pages/login.html");
-    }
+    };
 });

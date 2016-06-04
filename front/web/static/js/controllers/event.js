@@ -3,20 +3,20 @@ app.controller("EventCtrl", function ($scope, $http) {
         this.name = "";
         this.city = "";
         this.category = "";
-    }
+    };
 
     $scope.event = new Event();
 
     $scope.validateEvent = function () {
         var event = $scope.event;
 
-        if (event.name != "" && event.city != "" && event.category != "") {
+        if (event.name !== "" && event.city !== "" && event.category !== "") {
             return true;
         }
         else {
             return false;
         }
-    }
+    };
 
     $scope.addEvent = function () {
         var valid = $scope.validateEvent();
@@ -32,13 +32,13 @@ app.controller("EventCtrl", function ($scope, $http) {
         else {
             // console.log("not ok");
         }
-    }
+    };
 
     $scope.listEvents = function () {
         $http
             .get("/event/list_all")
             .then(function(res){
                 $scope.events = res.data;
-            })
-    }
+            });
+    };
 });
