@@ -14,10 +14,6 @@ var UserService = require('./services/user_service');
 
 var url = 'mongodb://localhost:27017/whattodo';
 
-// var app = module.exports = express();
-
-var UserController = require('./controllers/user_controller')(app);
-
 app.use(cookieSession({
     name: 'session',
     keys: ['kasjhd3j7nbfasjh']
@@ -31,47 +27,8 @@ app.use("/static", express.static("../front/web/static"));
 
 mongoose.connect(url);
 
-// app.get("/us/**", function(req, res){
-//     res.send("US");
-// });
+var UserController = require('./controllers/user_controller')(app);
 
-//USER
-// app.post("/user/checklogin", function (req, res) {
-//     UserService.checkLogin(req, res, UserDAO);
-// });
-
-app.post("/user/checklogin", function (req, res) {
-    var userPost = req.body;
-
-    var userDb = new UserDAO();
-    userDb.email = userPost.email;
-    userDb.password = userPost.password;
-
-    UserDAO.find(userPost, function (err, users) {
-        if (err) {
-            console.error(err);
-        }
-        else {
-            if (users.length == 0) {
-                res.send("dados errados")
-                console.log("dados errados");
-            }
-            else {
-                console.log("login ok");
-                req.session.user = userPost.email;
-                res.send("login ok");
-                // res.redirect("/");
-            }
-        }
-    });
-    // userDb.save(function(err, userDb){
-    //    if(err) console.error(err); 
-    // });
-
-    // res.send("ok");
-    // console.log(req.body);
-    //checar login no banco
-})
 
 
 //EVENT

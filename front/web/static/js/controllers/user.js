@@ -6,6 +6,7 @@ app.controller("UserCtrl", function ($scope, $http, $cookies) {
 
     $scope.checkLogin = () => {
         $http
+            // .post("/use", $scope.user)
             .post("/user/checklogin", $scope.user)
             .then(function (res) {
                 var data = res.data;
