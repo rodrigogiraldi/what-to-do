@@ -6,8 +6,6 @@ var bodyParser = require('body-parser');
 
 var app = module.exports = express();
 
-var EventDAO = require('./dao/event_dao');
-
 var url = 'mongodb://localhost:27017/whattodo';
 
 app.use(cookieSession({
@@ -24,47 +22,8 @@ app.use("/static", express.static("../front/web/static"));
 mongoose.connect(url);
 
 var ChatController = require('./controllers/chat_controller')(app);
+var EventController = require('./controllers/event_controller')(app);
 var UserController = require('./controllers/user_controller')(app);
-
-
-
-//EVENT
-app.post("/event/add", function (req, res) {
-
-    var eventDb = new EventDAO();
-    // eventDb.name = eventPost.name;
-    // eventDb.city = eventPost.city;
-    // eventDb.category = eventPost.category;
-
-    eventDb.set(req.body);
-    eventDb.save(function (err, eventDb) {
-        if (err) {
-            console.error(err);
-            res.send("err");
-        }
-        else {
-            res.send("added");
-        }
-    })
-
-
-    // console.log(eventDb);
-    // console.log(req.body);
-    // res.send("ok from back");
-});
-
-app.get("/event/list_all", function (req, res) {
-
-    EventDAO.find(function (err, events) {
-        if (err) {
-            console.error(err);
-            res.send("err");
-        }
-        else {
-            res.send(events);
-        }
-    });
-});
 
 
 app.get("/", function(req, res){
