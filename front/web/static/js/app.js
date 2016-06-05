@@ -1,1 +1,1 @@
-var app = angular.module("whatToDoApp", ['ngCookies', 'ui.router']);
+var app = angular.module("whatToDoApp", ['ngCookies', 'ui.router', 'leaflet-directive']);

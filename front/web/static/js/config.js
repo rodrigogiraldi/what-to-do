@@ -26,6 +26,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state('map', {
             url: '/map',
-            templateUrl: '../pages/map.html'
+            templateUrl: '../pages/map.html',
+            controller: 'MapCtrl'
         });
 });

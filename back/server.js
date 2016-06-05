@@ -21,6 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/public", express.static("../front/web/public"));
 app.use("/static", express.static("../front/web/static"));
+app.use("/bower_components", express.static("../front/web/bower_components"));
+app.use("/dist", express.static("../front/web/dist"));
 
 mongoose.connect(url);
 
