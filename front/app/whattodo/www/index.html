@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="whatToDo">
 
 <head>
   <meta charset="utf-8">
@@ -21,23 +21,20 @@
 
   <!-- your app's js -->
   <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+
+  <script src="js/controllers/user.js"></script>
 </head>
 
-<body ng-app="whatToDo">
+<body>
 
-  <ion-pane>
-    <div class="list" ng-controller="UserCtrl">
-      <label class="item item-input">
-        <span class="input-label">Username</span>
-        <input type="text" ng-model="userName">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Password</span>
-        <input type="password" ng-model="password">
-      </label>
-      <button class="button button-block button-positive activated" on-touch="Check()">Submit</button>
-    </div>
-  </ion-pane>
+  <ion-nav-bar class="bar-positive" align-title="center">
+    <ion-nav-back-button class="button-icon ion-arrow-left-c">
+    </ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-nav-view class="slide-left-right"></ion-nav-view>
+
 </body>
 
 </html>

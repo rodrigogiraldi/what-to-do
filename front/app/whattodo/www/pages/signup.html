@@ -1,0 +1,21 @@
+<ion-view title="Register Form">
+    <ion-content>
+        <ion-pane>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input type="text" ng-model="userName">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="password">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Repeat the password</span>
+                    <input type="password" ng-model="password">
+                </label>
+                <button class="button button-block button-calm" on-touch="Check()">Sign Up</button>
+            </div>
+        </ion-pane>
+    </ion-content>
+</ion-view>
