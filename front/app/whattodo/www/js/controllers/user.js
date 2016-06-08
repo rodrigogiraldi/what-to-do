@@ -1,13 +1,20 @@
 app.controller('UserCtrl', function ($scope, $http) {
-  // $scope.user = {
-  //   userName: $scope.userName,
-  //   password: $scope.password
-  // };
-  // $scope.Check = function () {
-  //   $http
-  //     .post(/*'http://localhost:1337/' + */host + '/user/check', $scope.user)
-  //     .then(function (req, res) {
-  //       var a  = res;
-  //     });
-  // }
+  $scope.user = {
+    email: "",
+    password: ""
+  }
+  
+  $scope.resp = "";
+
+  $scope.checkLogin = function () {
+    var user = $scope.user;
+
+    if (user.email != "" && user.password != "") {
+      $http
+        .post(host + "/user/checklogin", user)
+        .then(function(res){
+          $scope.resp = res.data;
+        });
+    }
+  };
 });

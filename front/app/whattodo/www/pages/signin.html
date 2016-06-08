@@ -4,15 +4,16 @@
         <ion-pane>
             <div class="list">
                 <label class="item item-input">
-                    <span class="input-label">Username</span>
-                    <input type="text" ng-model="userName">
+                    <span class="input-label">E-mail</span>
+                    <input type="text" ng-model="user.email">
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Password</span>
-                    <input type="password" ng-model="password">
+                    <input type="password" ng-model="user.password">
                 </label>
-                <button class="button button-block button-balanced" on-touch="Check()">Login</button>
+                <button class="button button-block button-balanced" on-touch="checkLogin()">Login</button>
                 <a class="button button-small button-block button-calm calm" ui-sref="signup">Register</a>
+                {{resp}}
                 <!--<button class="button button-small button-block button-calm calm" on-touch="Check()">Register</button>-->
             </div>
         </ion-pane>
