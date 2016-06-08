@@ -5,13 +5,36 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: '../pages/home.html'
+            views: {
+                "content": {
+                    templateUrl: '../pages/home.html'
+                },
+                "login": {
+
+                    templateUrl: "../pages/signin.html",
+                    controller: "UserCtrl"
+                }
+            }
+        })
+
+        .state('signup', {
+            url: '/signup',
+            views: {
+                "login": {
+                    templateUrl: "../pages/signup.html",
+                    controller: "UserCtrl"
+                }
+            }
         })
 
         .state('event_add', {
             url: '/event_add',
-            templateUrl: '../pages/event_add.html',
-            controller: 'EventCtrl'
+            views: {
+                "content": {
+                    templateUrl: '../pages/event_add.html',
+                    controller: 'EventCtrl'
+                }
+            }
             /*,
             controller: function($scope){
                 $rootScope.title = "Events"
@@ -20,13 +43,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state('event_find', {
             url: '/event_find',
-            templateUrl: '../pages/event_find.html',
-            controller: 'EventCtrl'
+            views: {
+                "content": {
+                    templateUrl: '../pages/event_find.html',
+                    controller: 'EventCtrl'
+                }
+            }
         })
 
         .state('map', {
             url: '/map',
-            templateUrl: '../pages/map.html',
-            controller: 'MapCtrl'
+            views: {
+                "content": {
+                    templateUrl: '../pages/map.html',
+                    controller: 'MapCtrl'
+                }
+            }
         });
 });

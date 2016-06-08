@@ -4,4 +4,8 @@ module.exports = function (app) {
     app.post("/user/checklogin", function (req, res) {
         UserService.checkLogin(req, res);
     });
+
+    app.post("/user/add", function (req, res) {
+        UserService.userAdd(req, res);
+    });
 }

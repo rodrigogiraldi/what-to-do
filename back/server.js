@@ -27,6 +27,7 @@ app.use("/dist", express.static("../front/web/dist"));
 mongoose.connect(url);
 
 var ChatController = require('./controllers/chat_controller')(app);
+var CityController = require('./controllers/city_controller')(app);
 var EventController = require('./controllers/event_controller')(app);
 var UserController = require('./controllers/user_controller')(app);
 

@@ -1,11 +1,7 @@
 var UserDAO = require('../dao/user_dao');
 
-var checkLogin = function(req, res){
+var checkLogin = function (req, res) {
     var userPost = req.body;
-
-    var userDb = new UserDAO();
-    userDb.email = userPost.email;
-    userDb.password = userPost.password;
 
     UserDAO.find(userPost, function (err, users) {
         if (err) {
@@ -33,6 +29,22 @@ var checkLogin = function(req, res){
     //checar login no banco
 }
 
+var userAdd = function (req, res) {
+    var userPost = req.body;
+
+    var userDb = new UserDAO();
+    userDb.set(userPost);
+    userDb.save(function(err, userDb){
+       if(err){
+           res.send("err");
+       } 
+       else{
+           res.send("registered");
+       }
+    });
+}
+
 module.exports = {
-    checkLogin: checkLogin
+    checkLogin: checkLogin,
+    userAdd: userAdd
 }

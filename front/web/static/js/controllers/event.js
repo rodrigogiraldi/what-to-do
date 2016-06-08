@@ -23,21 +23,55 @@ app.controller("EventCtrl", function ($scope, $http) {
 
         if (valid) {
             $http
-                .post("/event/add", $scope.event)
+                .post("/city/exist", { city: $scope.event.city })
                 .then(function (res) {
-                    // console.log("chegou" + res.data);
+                    var msgRet = res.data;
+
+                    if (msgRet == "city not exist") {
+                        $http
+                            .get("http://maps.googleapis.com/maps/api/geocode/json?address=" + $scope.event.city)
+                            .then(function (res) {
+                                var newCityData = {
+                                    name: $scope.event.city,
+                                    lat: res.data.results[0].geometry.location.lat,
+                                    lng: res.data.results[0].geometry.location.lng
+                                }
+
+                                $http
+                                    .post("/city/add", newCityData)
+                                    .then(function (res) {
+                                        var bp = 1;
+                                        bp = 2;
+                                    });
+                            });
+                    }
+
+                    $http
+                        .post("/event/add", $scope.event)
+                        .then(function (res) {
+                            // var bp = 1;
+                            // bp = 2;
+                            // console.log("chegou" + res.data);
+                        });
                 });
-            // console.log("ok");
         }
-        else {
-            // console.log("not ok");
-        }
+
+        //     $http
+        //         .post("/event/add", $scope.event)
+        //         .then(function (res) {
+        //             // console.log("chegou" + res.data);
+        //         });
+        //     // console.log("ok");
+        // }
+        // else {
+        //     // console.log("not ok");
+        // }
     };
 
     $scope.listEvents = function () {
         $http
             .get("/event/list_all")
-            .then(function(res){
+            .then(function (res) {
                 $scope.events = res.data;
             });
     };

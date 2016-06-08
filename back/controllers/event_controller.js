@@ -7,5 +7,9 @@ module.exports = function(app){
     
     app.get("/event/list_all", function (req, res) {
         EventService.listAll(req, res);
-    })
+    });
+    
+    app.get("/event/list_coordinates", function(req, res){
+        EventService.listCoordinates(req, res);
+    });
 }
