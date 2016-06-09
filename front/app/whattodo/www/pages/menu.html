@@ -10,11 +10,22 @@
             <a class="item" ui-sref="event_add">Add</a>
 
             <div class="item item-divider">
-                <a ui-sref="map" style="text-decoration:none;color:#222">Map</a>
+                Others
             </div>
+            
+            <a class="item" ui-sref="map">Map</a>
+            <a class="item" ui-sref="chat">Chat</a>            
+
 
             <div class="item item-divider">
-                <a ui-sref="chat" style="text-decoration:none;color:#222">Chat</a>
+                <a ui-sref="chat" style="text-decoration:none;color:#222">Profile</a>
+            </div>
+            
+            <div class="item" style="text-decoration:none;color:#222" on-touch="logout()">Logout</div>
+                        
+
+                <!--<div style="text-decoration:none;color:#222" on-touch="logout()">Logout</div>-->
+                <!--<a on-touch="logout()" style="text-decoration:none;color:#222">Logout</a>-->
             </div>
         </div>
         <!--<ion-list>

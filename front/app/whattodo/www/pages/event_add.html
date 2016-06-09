@@ -1,5 +1,27 @@
 <ion-view>
     <ion-content>
-        Add
+        <ion-pane>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input type="text" ng-model="event.name">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">City</span>
+                    <input type="text" ng-model="event.city">
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Category
+                    </div>
+                    <select ng-model="event.category">
+                        <option value="">Nightclub</option>
+                        <option value="Pub">Pub</option>
+                        <option value="Show">Show</option>
+                    </select>
+                </label>
+                <button class="button button-block button-balanced" on-touch="addEvent()">Submit</button>
+            </div>
+        </ion-pane>
     </ion-content>
 </ion-view>

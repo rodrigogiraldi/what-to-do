@@ -1,4 +1,4 @@
-<ion-view title="Please Sign In" hide-back-button="true">
+<ion-view title="Please Sign In" hide-back-button="true" ng-init="isLogged()">
     <ion-content class="padding">
         <!-- The content of the page -->
         <ion-pane>
@@ -12,7 +12,7 @@
                     <input type="password" ng-model="user.password">
                 </label>
                 <button class="button button-block button-balanced" on-touch="checkLogin()">Login</button>
-                <a class="button button-small button-block button-calm calm" ui-sref="signup">Register</a>
+                <a class="button button-block button-calm calm" ui-sref="signup">Register</a>
                 <!--<button class="button button-small button-block button-calm calm" on-touch="Check()">Register</button>-->
             </div>
         </ion-pane>

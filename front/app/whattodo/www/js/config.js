@@ -27,7 +27,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/menu',
             views: {
                 "content": {
-                    templateUrl: 'menu.html'
+                    templateUrl: 'menu.html',
+                    controller: 'UserCtrl'
                 }
             }
         })
@@ -35,7 +36,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/event_find',
             views: {
                 "content": {
-                    templateUrl: 'event_find.html'
+                    templateUrl: 'event_find.html',
+                    controller: "EventCtrl"
                 }
             }
         })
@@ -43,7 +45,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/event_add',
             views: {
                 "content": {
-                    templateUrl: 'event_add.html'
+                    templateUrl: 'event_add.html',
+                    controller: "EventCtrl"
                 }
             }
         })
