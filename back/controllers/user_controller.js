@@ -8,4 +8,8 @@ module.exports = function (app) {
     app.post("/user/add", function (req, res) {
         UserService.userAdd(req, res);
     });
+    
+    app.get("/user/ret", function(req, res){
+        UserService.retUser(req, res);
+    });
 }

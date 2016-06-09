@@ -1,3 +1,2 @@
-var app = angular.module('whatToDo', ['ionic']);
-var host = 'http://localhost:8002';
-
+var app = angular.module('whatToDo', ['ionic', 'ngCookies']);
+var host = "http://192.168.25.152:8002";

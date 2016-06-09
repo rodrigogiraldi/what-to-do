@@ -44,7 +44,13 @@ var userAdd = function (req, res) {
     });
 }
 
+var retUser = function(req, res){
+    console.log("chegou");
+    res.send("retorno");
+}
+
 module.exports = {
     checkLogin: checkLogin,
-    userAdd: userAdd
+    userAdd: userAdd,
+    retUser: retUser
 }
