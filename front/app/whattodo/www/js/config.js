@@ -50,14 +50,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('map', {
-            url: '/map',
-            views: {
-                "content": {
-                    templateUrl: 'map.html'
-                }
-            }
-        })
         .state('chat', {
             url: '/chat',
             views: {
