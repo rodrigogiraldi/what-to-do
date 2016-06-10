@@ -1,15 +1,17 @@
 <ion-view ng-init="listAll()">
     <ion-content>
         <div class="list">
-            <a ng-class="msg.owner?'item item-avatar':'item item-avatar-right'" href="#" ng-repeat="msg in messages">
+            <a ng-class="msg.owner?'item item-avatar':'item item-avatar-right'" href="" ng-repeat="msg in messages">
                 <img src="../img/avatar.png">
                 <h2>{{msg.user}}</h2>
                 <p>{{msg.message}}</p>
             </a>
+            <br>
+            <br>
         </div>
     </ion-content>
     <div class="bar bar-footer input-group row">
-        <input id="btn-input" type="text" placeholder="Type your message here..." class="form-control input-sm col col-85">
-        <input class="button button-dark" id="btn-chat" type="submit" value="Send"></input>
+        <input id="btn-input" type="text" placeholder="Type your message here..." class="form-control input-sm col col-85" ng-model="message">
+        <input class="button button-dark" id="btn-chat" type="submit" value="Send" on-touch="sendMessage()"></input>
     </div>
 </ion-view>
